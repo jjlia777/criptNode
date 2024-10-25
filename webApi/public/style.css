@@ -1,63 +1,195 @@
+/* Estilos gerais */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  background-color: #1e1e1e; /* Fundo escuro para um visual mais tecnológico */
+  color: #ffffff; /* Texto branco para contraste */
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  overflow: hidden; /* Oculta o overflow para animações */
+  position: relative; /* Para que as estrelas sejam posicionadas corretamente */
 }
 
-.container {
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 400px;
-  text-align: center;
-}
-
+/* Animação de flutuação do título */
 h1 {
-  color: #333;
+  font-size: 3rem;
+  animation: float 3s ease-in-out infinite; /* Animação contínua */
+  text-shadow: 0 0 20px rgba(0, 255, 0, 0.7); /* Sombra brilhante verde */
+  opacity: 0; /* Começa invisível */
+  animation: slideInTitle 0.8s forwards; /* Animação de entrada */
 }
 
-.form-group {
-  margin-bottom: 20px;
+/* Animação de entrada do contêiner */
+.container {
+  background-color: rgba(50, 50, 50, 0.8); /* Fundo semi-transparente cinza escuro */
+  padding: 30px;
+  border-radius: 12px; /* Cantos arredondados */
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.5); /* Sombra brilhante verde ao redor */
+  width: 600px; /* Aumenta a largura do contêiner */
+  text-align: center;
+  position: relative;
+  opacity: 0; /* Começa invisível */
+  transform: scale(0.8); /* Começa menor */
+  animation: slideInContainer 0.8s forwards; /* Animação de deslizamento do contêiner */
 }
 
+/* Estilo da seção de entrada de texto */
+.input-section {
+  margin: 20px 0;
+}
+
+/* Estilo do textarea */
 textarea {
   width: 100%;
-  padding: 10px;
+  padding: 15px; /* Aumenta o padding para mais conforto */
   border-radius: 4px;
-  border: 1px solid #ccc;
-  resize: none;
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Borda sutil branca */
+  background-color: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente */
+  resize: none; /* Desativa o redimensionamento */
+  min-height: 100px; /* Altura mínima */
+  font-family: monospace; /* Fonte monoespaçada para melhor legibilidade */
+  opacity: 0; /* Começa invisível */
+  animation: slideInInput 0.8s forwards; /* Animação de entrada para o textarea */
+  animation-delay: 0.4s; /* Delay para entrada do textarea */
 }
 
-.buttons {
-  display: flex;
-  justify-content: space-between;
-}
-
+/* Estilo dos botões */
 button {
-  padding: 10px;
+  padding: 12px;
   color: #fff;
-  background-color: #007bff;
+  background-color: #28a745; /* Verde para o botão */
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  width: 48%;
+  margin: 10px 0;
+  width: 100%;
+  transition: background-color 0.3s, transform 0.3s; /* Transição suave */
+  opacity: 0; /* Começa invisível */
+  animation: slideInButton 0.8s forwards; /* Animação de entrada para o botão */
+  animation-delay: 0.6s; /* Delay para entrada do botão */
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #218838; /* Verde escuro ao passar o mouse */
 }
 
+/* Estilo da seção de resultados */
 .result-section {
-  margin-top: 20px;
+  margin: 20px 0;
+  text-align: left;
 }
 
-textarea[readonly] {
-  background-color: #e9ecef;
-  cursor: not-allowed;
+/* Estilos dos parágrafos */
+p {
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente para resultados */
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Borda sutil branca */
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: monospace;
+  max-height: 300px; /* Aumenta a altura máxima */
+  overflow: auto; /* Adiciona rolagem se o conteúdo for muito longo */
 }
+
+/* Animações de entrada */
+@keyframes slideInContainer {
+  0% {
+    opacity: 0;
+    transform: scale(0.8); /* Começa menor */
+  }
+  100% {
+    opacity: 1; /* Fica totalmente visível */
+    transform: scale(1); /* Tamanho original */
+  }
+}
+
+@keyframes slideInTitle {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px); /* Começa acima */
+  }
+  100% {
+    opacity: 1; /* Fica totalmente visível */
+    transform: translateY(0); /* Posição original */
+  }
+}
+
+@keyframes slideInInput {
+  0% {
+    opacity: 0;
+    transform: translateY(30px); /* Começa abaixo */
+  }
+  100% {
+    opacity: 1; /* Fica totalmente visível */
+    transform: translateY(0); /* Posição original */
+  }
+}
+
+@keyframes slideInButton {
+  0% {
+    opacity: 0;
+    transform: translateY(30px); /* Começa abaixo */
+  }
+  100% {
+    opacity: 1; /* Fica totalmente visível */
+    transform: translateY(0); /* Posição original */
+  }
+}
+
+/* Animação de desvanecimento */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px); /* Começa acima */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Termina na posição original */
+  }
+}
+
+/* Animação de flutuação */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Animação de estrelas caindo */
+@keyframes fall {
+  0% {
+    transform: translateY(-100vh); /* Começa acima da tela */
+  }
+  100% {
+    transform: translateY(100vh); /* Termina abaixo da tela */
+  }
+}
+
+/* Estilo das estrelas */
+.star {
+  position: absolute;
+  background-color: rgba(0, 255, 0, 0.8); /* Estrelas verdes mais brilhantes */
+  border-radius: 50%;
+  animation: fall linear infinite; /* Animação de queda */
+}
+
+/* Criação de estrelas na tela com tamanhos variados */
+.star:nth-child(1) { width: 8px; height: 8px; left: 10%; animation-duration: 4s; animation-delay: 0s; }
+.star:nth-child(2) { width: 10px; height: 10px; left: 30%; animation-duration: 5s; animation-delay: 1s; }
+.star:nth-child(3) { width: 12px; height: 12px; left: 50%; animation-duration: 3s; animation-delay: 2s; }
+.star:nth-child(4) { width: 6px; height: 6px; left: 70%; animation-duration: 6s; animation-delay: 0.5s; }
+.star:nth-child(5) { width: 14px; height: 14px; left: 90%; animation-duration: 4.5s; animation-delay: 1.5s; }
+/* Adicionando mais estrelas */
+.star:nth-child(6) { width: 8px; height: 8px; left: 15%; animation-duration: 4s; animation-delay: 0.2s; }
+.star:nth-child(7) { width: 10px; height: 10px; left: 25%; animation-duration: 5s; animation-delay: 1.2s; }
+.star:nth-child(8) { width: 12px; height: 12px; left: 35%; animation-duration: 3.5s; animation-delay: 2.5s; }
+.star:nth-child(9) { width: 8px; height: 8px; left: 55%; animation-duration: 6s; animation-delay: 0.7s; }
+.star:nth-child(10) { width: 14px; height: 14px; left: 80%; animation-duration: 4.5s; animation-delay: 1.9s; }
